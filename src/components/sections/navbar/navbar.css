@@ -1,4 +1,12 @@
 nav {
-    border: 5px solid red;
     background-color: blue;
+    border: black solid 3px;
+
+    box-sizing: border-box;
+
+    width: 100%;
+    height: 10vh;
+
+    position: fixed;
+    top: 0;
 }
