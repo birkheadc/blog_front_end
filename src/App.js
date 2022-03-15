@@ -4,27 +4,22 @@ import Navbar from './components/sections/navbar/navbar';
 import Feed from './components/sections/feed/feed';
 import NavColumn from './components/sections/navcolumn/navcolumn';
 import Footer from './components/sections/footer/footer';
+import fetchArticles from './api/fetchArticles/fetchArticles';
 
 class App extends Component {
 
   state = {
     articles: [
-      {
-        id: 0,
-        title: "The places I've been",
-        body: "I've been to a few places."
-      },
-      {
-        id: 1,
-        title: "The people I've seen",
-        body: "I've seen quite a few people!"
-      },
-      {
-        id: 2,
-        title: "The food I've eaten",
-        body: "I'm lactose intolerant."
-      }
+      
     ]
+  }
+
+  componentDidMount() {
+    this.setState(
+      {
+        articles: fetchArticles()
+      }
+    );
   }
 
   renderHeader() {

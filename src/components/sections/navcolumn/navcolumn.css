@@ -1,0 +1,13 @@
+.nav-column {
+    background: grey;
+    border: black solid 3px;
+
+    box-sizing: border-box;
+
+    width: 200px;
+    height: 78vh;
+
+    position: fixed;
+    right: 0;
+    top: 11vh;
+}

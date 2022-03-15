@@ -1,0 +1,10 @@
+main {
+    background-color: aqua;
+    border: black solid 3px;
+
+    min-height: 80vh;
+    width: 65em;
+
+    padding: 1em;
+    margin: 11vh auto 1vh auto;
+}

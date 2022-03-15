@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import './navcolumn.css';
 
 class NavColumn extends Component {
     state = {  } 
     render() { 
         return (
-            <div>
+            <div className='nav-column'>
                 
             </div>
         );
