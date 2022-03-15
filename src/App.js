@@ -16,11 +16,6 @@ class App extends Component {
 
   componentDidMount() {
     this.setArticles();
-    // this.setState(
-    //   {
-    //     articles: articles
-    //   }
-    // );
   }
 
   async setArticles() {
