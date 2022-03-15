@@ -15,9 +15,19 @@ class App extends Component {
   }
 
   componentDidMount() {
+    this.setArticles();
+    // this.setState(
+    //   {
+    //     articles: articles
+    //   }
+    // );
+  }
+
+  async setArticles() {
+    let articles = await fetchArticles()
     this.setState(
       {
-        articles: fetchArticles()
+        articles: articles
       }
     );
   }
