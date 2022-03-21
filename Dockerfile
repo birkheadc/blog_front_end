@@ -4,10 +4,12 @@ WORKDIR /app
 ENV PATH /app/node_modules/.bin:$PATH
 COPY package.json ./
 COPY package-lock.json ./
-RUN npm ci --silent
-RUN npm install react-scripts@3.4.1 -g --silent
+RUN npm ci
 COPY . ./
-RUN npm run build
+ARG API_URL
+RUN REACT_APP_API_URL=$API_URL npm run build
+
+# RUN REACT_APP_BASE_URL=this_works_to_hard_code_it npm run build
 
 # production environment
 FROM nginx:stable-alpine 

@@ -19,7 +19,7 @@ class App extends Component {
   }
 
   async setArticles() {
-    let articles = await fetchArticles()
+    let articles = await fetchArticles(process.env.REACT_APP_API_URL);
     this.setState(
       {
         articles: articles
