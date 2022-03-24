@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Routes, Route, BrowserRouter } from 'react-router-dom';
+import { Routes, Route, BrowserRouter, Navigate } from 'react-router-dom';
 
 import './App.css';
 
@@ -52,7 +52,6 @@ class App extends Component {
     return(
       <main>
         <Routes>
-          <Route exact path='/' element={<Feed apiUrl={process.env.REACT_APP_API_URL}/>}/>
           <Route path='/articles/title/:title' element={
             <>
               <Feed apiUrl={process.env.REACT_APP_API_URL} />
@@ -60,6 +59,7 @@ class App extends Component {
             </>}
           />
           <Route exact path='/browse' element={<Browse articles={this.state.articleProfiles}/>}/>
+          <Route path='*' element={<Navigate to='/browse' replace />} />
         </Routes>
       </main>
     )
