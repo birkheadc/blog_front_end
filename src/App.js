@@ -1,31 +1,38 @@
 import React, { Component } from 'react';
+import { Routes, Route, BrowserRouter, Navigate } from 'react-router-dom';
+
 import './App.css';
+
 import Navbar from './components/sections/navbar/navbar';
 import Feed from './components/sections/feed/feed';
 import NavColumn from './components/sections/navcolumn/navcolumn';
 import Footer from './components/sections/footer/footer';
-import fetchArticles from './api/fetchArticles/fetchArticles';
+
+import fetchArticleProfiles from './api/fetchArticleProfiles/fetchArticleProfiles';
+import BackForwardLinks from './components/backForwardLinks/backForwardLinks';
+import Browse from './components/sections/browse/browse';
 
 class App extends Component {
 
   state = {
-    articles: [
+    articleProfiles: [
       
     ]
   }
 
   componentDidMount() {
-    this.setArticles();
+    this.setArticleProfiles();
   }
 
-  async setArticles() {
-    let articles = await fetchArticles(process.env.REACT_APP_API_URL);
+  async setArticleProfiles() {
+    let articleProfiles = await fetchArticleProfiles(process.env.REACT_APP_API_URL);
     this.setState(
       {
-        articles: articles
+        articleProfiles: articleProfiles
       }
     );
   }
+
 
   renderHeader() {
     return(
@@ -37,14 +44,23 @@ class App extends Component {
 
   renderNavColumn() {
     return(
-      <NavColumn />
+      <NavColumn articles={this.state.articleProfiles}/>
     );
   }
 
   renderBody() {
     return(
       <main>
-        <Feed articles={this.state.articles}/>
+        <Routes>
+          <Route path='/articles/title/:title' element={
+            <>
+              <Feed apiUrl={process.env.REACT_APP_API_URL} />
+              <BackForwardLinks articles={this.state.articleProfiles}/>
+            </>}
+          />
+          <Route exact path='/browse' element={<Browse articles={this.state.articleProfiles}/>}/>
+          <Route path='*' element={<Navigate to='/browse' replace />} />
+        </Routes>
       </main>
     )
   }
@@ -57,12 +73,12 @@ class App extends Component {
 
   render() {
     return (
-      <>
-      {this.renderHeader()}
-      {this.renderNavColumn()}
-      {this.renderBody()}
-      {this.renderFooter()}
-      </>
+      <BrowserRouter>
+        {this.renderHeader()}
+        {this.renderNavColumn()}
+        {this.renderBody()}
+        {this.renderFooter()}
+      </BrowserRouter>
     );
   }
 }

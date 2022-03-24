@@ -1,0 +1,22 @@
+.browse-article-list {
+    width: fit-content;
+
+    margin: 0 auto;
+}
+
+.browse-article-list-item {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+
+    border: solid black 3px;
+
+    margin: 1em 0;
+    padding: .5em 1em;
+}
+
+.browse-article-list-item div {
+    display: flex;
+    flex-direction: row;
+    gap: 3em;
+}

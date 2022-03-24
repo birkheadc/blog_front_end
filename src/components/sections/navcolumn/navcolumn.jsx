@@ -1,15 +1,46 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './navcolumn.css';
+import { NavLink } from 'react-router-dom';
 
-class NavColumn extends Component {
-    state = {  } 
-    render() { 
+function NavColumn(props){
+
+    const RECENT_NUM = 5;
+
+    const renderRecents = function() {
+        if (!props.articles) {
+            return(
+                <div>
+                    <h3>No articles found!</h3>
+                </div>
+            );
+        }
         return (
-            <div className='nav-column'>
-                
+            <div className='nav-column-list-div'>
+                <h3>Recent Posts</h3>
+                <ul>
+                    {props.articles.slice(0, RECENT_NUM).map(
+                        article =>
+                        <li key={article.title}>
+                            <NavLink className='nav-column-link' to={'/articles/title/' + article.title}>{article.title}</NavLink>
+                        </li>
+                    )}
+                </ul>
             </div>
         );
     }
+
+    const renderSearchLink = function() {
+        return(
+            <NavLink to='/browse'>Browse All Time</NavLink>
+        );
+    }
+    
+    return(
+        <div className='nav-column'>
+            {renderRecents()}
+            {renderSearchLink()}
+        </div>
+    );
 }
  
 export default NavColumn;
