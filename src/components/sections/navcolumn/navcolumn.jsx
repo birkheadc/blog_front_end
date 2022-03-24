@@ -15,13 +15,13 @@ function NavColumn(props){
             );
         }
         return (
-            <div>
+            <div className='nav-column-list-div'>
                 <h3>Recent Posts</h3>
                 <ul>
                     {props.articles.slice(0, RECENT_NUM).map(
                         article =>
                         <li key={article.title}>
-                            <NavLink to={'/articles/title/' + article.title}>{article.title}</NavLink>
+                            <NavLink className='nav-column-link' to={'/articles/title/' + article.title}>{article.title}</NavLink>
                         </li>
                     )}
                 </ul>

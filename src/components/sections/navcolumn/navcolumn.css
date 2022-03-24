@@ -3,20 +3,37 @@
 
     box-sizing: border-box;
 
-    width: 200px;
+    width: 300px;
     height: 78vh;
 
     position: fixed;
     right: 0;
     top: 11vh;
 
-    padding: 1em 0;
+    padding: 1em;
 
     display: flex;
     flex-direction: column;
     gap: 2em;
 
     align-items: center;
+
+    
+}
+
+.nav-column-list-div {
+    overflow:hidden;
+    width: 100%;
+}
+
+.nav-column-list-div ul {
+    display: flex;
+    flex-direction: column;
+    gap: .5em;
+}
+
+.nav-column-link  {
+    padding: .5em 0;
 }
 
 .nav-column h3 {
