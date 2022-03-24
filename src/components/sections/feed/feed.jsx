@@ -1,40 +1,67 @@
-import React, { Component } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useLocation, useParams } from 'react-router-dom';
 import './feed.css';
 
-class Feed extends Component {
+import fetchArticleByTitle from '../../../api/fetchArticleByTitle/fetchArticleByTitle';
 
-    renderNoArticles() {
-        return(
-            <h2>No articles found!</h2>
-        ); 
-    }
+function Feed(props) {
 
-    renderSubtitle(subtitle) {
-        if (subtitle === "") {
-            return null;
+    const location = useLocation();
+    const { title } = useParams();
+
+    const [article, setArticle] = useState();
+    const [isLoading, setLoading] = useState();
+
+    // Fetch and set article on update.
+    useEffect(() => {
+        const getArticle = async () => {
+            setLoading(true);
+            let article = await fetchArticleByTitle(props.apiUrl, title);
+            if (article.title) {
+                setArticle(article);
+            }
+            setLoading(false);
+        };
+        if ((!article && title) || (article.title !== title)) {
+            getArticle();
         }
-        return <h3>{subtitle}</h3>
+    }, [article, props.apiUrl, title, location]);
+
+    const renderLoading = function() {
+        return(
+            <h2>Loading...</h2>
+        )
     }
 
-    renderArticles(articles) {
-        return (
-            articles.map(
-                article =>
-                <section key={article.id}>
-                    <h2>{article.title}</h2>
-                    {this.renderSubtitle(article.subtitle)}
-                    <p>{article.body}</p>
-                </section>
-            )
+    const renderNoFound = function() {
+        return(
+            <h2>No article found!</h2>
         );
     }
-    
-    render() { 
-        if (this.props.articles && this.props.articles.length > 0) {
-            return this.renderArticles(this.props.articles);
-        }
-        return this.renderNoArticles();
+
+    const renderArticle = function() {
+        return(
+            <div>
+                <h2>{article.title}</h2>
+                <h3>{article.subTitle}</h3>
+                <p>{article.body}</p>
+            </div>
+        );
     }
+
+    if (isLoading) {
+        return renderLoading();
+    }
+
+    if (!article) {
+        return renderNoFound();
+    }
+
+    return(
+        <>
+        {renderArticle()}
+        </>
+    );
 }
  
 export default Feed;

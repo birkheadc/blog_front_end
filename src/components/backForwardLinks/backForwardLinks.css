@@ -1,0 +1,23 @@
+.back-forward-links {
+    width: 12em;
+
+    margin: 0 auto;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+}
+
+.back-forward-links div {
+    width: 4em;
+
+    display: flex;
+    flex-direction: row;
+
+    justify-content: space-between;    
+}
+
+.back-forward-links a {
+    text-decoration: none;
+}
