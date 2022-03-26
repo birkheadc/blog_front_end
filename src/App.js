@@ -37,7 +37,7 @@ class App extends Component {
   renderHeader() {
     return(
       <header>
-        <Navbar />
+        <Navbar apiUrl={process.env.REACT_APP_API_URL}/>
       </header>
     );
   }

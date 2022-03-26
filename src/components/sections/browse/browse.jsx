@@ -3,7 +3,14 @@ import { NavLink } from 'react-router-dom';
 import './browse.css';
 
 function Browse(props) {
-    return(
+    if (!props.articles || Array.isArray(props.articles) === false || props.articles.length < 1) {
+        return (
+            <div className='browse-article'>
+                <h2>Could Not Connect To Server!</h2>
+            </div>
+        );
+    }
+    return (
         <div className='browse-article'>
             <h2>Browse All Posts</h2>
             <ul className='browse-article-list'>
