@@ -4,8 +4,8 @@ import './browse.css';
 
 function Browse(props) {
     return(
-        <div>
-            <h2 className='center-text'>Browse All Posts</h2>
+        <div className='browse-article'>
+            <h2>Browse All Posts</h2>
             <ul className='browse-article-list'>
                 {props.articles.map(
                     article =>

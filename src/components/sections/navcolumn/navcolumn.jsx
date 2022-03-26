@@ -10,13 +10,13 @@ function NavColumn(props){
         if (!props.articles || Array.isArray(props.articles) === false || props.articles.length < 1) {
             return(
                 <div>
-                    <h3>No articles found!</h3>
+                    <h2>No articles found!</h2>
                 </div>
             );
         }
         return (
             <div className='nav-column-list-div'>
-                <h3>Recent Posts</h3>
+                <h2>Recent Posts</h2>
                 <ul>
                     {props.articles.slice(0, RECENT_NUM).map(
                         article =>
@@ -31,7 +31,7 @@ function NavColumn(props){
 
     const renderSearchLink = function() {
         return(
-            <NavLink to='/browse'>Browse All Time</NavLink>
+            <h3><NavLink to='/browse'>Browse All Time</NavLink></h3>
         );
     }
     

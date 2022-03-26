@@ -29,19 +29,23 @@ function Feed(props) {
 
     const renderLoading = function() {
         return(
-            <h2>Loading...</h2>
+            <div className='article'>
+                <h2>Loading...</h2>
+            </div>
         )
     }
 
     const renderNoFound = function() {
         return(
-            <h2>No article found!</h2>
+            <div className='article'>
+                <h2>No article found!</h2>
+            </div>
         );
     }
 
     const renderArticle = function() {
         return(
-            <div>
+            <div className='article'>
                 <h2>{article.title}</h2>
                 <h3>{article.subTitle}</h3>
                 <p className='article-body'>{article.body}</p>

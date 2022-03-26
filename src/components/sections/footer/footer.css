@@ -1,6 +1,5 @@
 footer {
-    border: black solid 3px;
-
+    background-color: var(--clr-bg-primary);
     box-sizing: border-box;
 
     width: 100%;

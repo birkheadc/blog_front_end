@@ -1,6 +1,4 @@
 nav {
-    border: black solid 3px;
-
     box-sizing: border-box;
 
     width: 100%;
@@ -8,4 +6,6 @@ nav {
 
     position: fixed;
     top: 0;
+
+    background-color: var(--clr-bg-primary);
 }

@@ -1,6 +1,13 @@
-.browse-article-list {
-    width: fit-content;
+.browse-article h2 {
+    text-align: center;
 
+    color: var(--clr-accent-primary);
+
+    font-size: 2rem;
+}
+
+.browse-article ul {
+    width: 90%;
     margin: 0 auto;
 }
 
@@ -9,8 +16,6 @@
     flex-direction: column;
     text-decoration: none;
 
-    border: solid black 3px;
-
     margin: 1em 0;
     padding: .5em 1em;
 }
@@ -18,5 +23,11 @@
 .browse-article-list-item div {
     display: flex;
     flex-direction: row;
-    gap: 3em;
+
+    justify-content: space-between;
+    padding: .3em 0;
+}
+
+.browse-article-list-item {
+    color: var(--clr-text-primary);
 }

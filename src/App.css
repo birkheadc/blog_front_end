@@ -1,4 +1,32 @@
+:root,
+:root.dark {
+    --clr-text-primary: #F7F7F9;
+    
+    --clr-bg-primary: #2B2D42;
+    --clr-bg-secondary: #2B2D42;
+
+    --clr-accent-primary: #FFC800;
+    
+    --clr-link-primary: #06BEE1;
+    --clr-link-secondary: #CC76A1;
+}
+
+:root.light {
+    --clr-text-primary: #F7F7F9;
+    
+    --clr-bg-primary: #2B2D42;
+    --clr-bg-secondary: #2B2D42;
+
+    --clr-accent-primary: #FFC800;
+    
+    --clr-link-primary: #6BA368;
+    --clr-link-secondary: #CC76A1;
+}
 /* General */
+
+html {
+    background-color: var(--clr-bg-primary);
+}
 
 p, h1, h2, h3, h4, h5, h6 {
     margin: 0;
@@ -11,11 +39,18 @@ ul {
     padding: 0;
 }
 
+a {
+    text-decoration: none;
+    color: var(--clr-link-primary);
+}
+
+a:hover {
+    color: var(--clr-link-secondary);
+}
+
 /* Main */
 
 main {
-    border: black solid 3px;
-
     min-height: 80vh;
     width: 65em;
 
