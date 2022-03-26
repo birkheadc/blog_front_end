@@ -44,7 +44,7 @@ function Feed(props) {
             <div>
                 <h2>{article.title}</h2>
                 <h3>{article.subTitle}</h3>
-                <p>{article.body}</p>
+                <p className='article-body'>{article.body}</p>
             </div>
         );
     }

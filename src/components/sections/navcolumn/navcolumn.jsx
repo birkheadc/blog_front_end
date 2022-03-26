@@ -7,7 +7,7 @@ function NavColumn(props){
     const RECENT_NUM = 5;
 
     const renderRecents = function() {
-        if (!props.articles) {
+        if (!props.articles || Array.isArray(props.articles) === false || props.articles.length < 1) {
             return(
                 <div>
                     <h3>No articles found!</h3>

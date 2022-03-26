@@ -147,6 +147,11 @@ function BackForwardLinks(props) {
         );
     }
 
+    if (true)
+    {
+        return null;
+    }
+
     return(
         <div className='back-forward-links'>
             {renderBackLinks()}
