@@ -9,12 +9,12 @@ async function fetchArticleProfiles(API_URL) {
       console.log("Attempting to fetch article profiles from: " + apiUrl);
       let response = await fetch(apiUrl);
       let data = await response.json();
-      console.log("Successfully fetched!")
+      console.log("Successfully fetched article profiles!")
       return data;
     }
     catch
     {
-      console.log("Failed to fetch...");
+      console.log("Failed to fetch article profiles...");
       return({});
     }
 }

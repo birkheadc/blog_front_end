@@ -1,4 +1,9 @@
 async function fetchBlogSubtitle(API_URL) {
+    
+    if (API_URL === undefined) {
+        return "";
+    }
+
     const subDir = "/settings/BlogSubTitle"
     const apiUrl = API_URL + subDir;
 
