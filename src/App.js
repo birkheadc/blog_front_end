@@ -15,17 +15,28 @@ import Browse from './components/sections/browse/browse';
 class App extends Component {
 
   state = {
+    API_URL: "http://" + window.location.host + "/api",
     articleProfiles: [
       
     ]
   }
 
   componentDidMount() {
+    // this.setApiUrl();
     this.setArticleProfiles();
   }
 
+  setApiUrl() {
+    let apiUrl = "http://" + window.location.host + "/api";
+    this.setState(
+      {
+        API_URL: apiUrl
+      }
+    )
+  }
+
   async setArticleProfiles() {
-    let articleProfiles = await fetchArticleProfiles(process.env.REACT_APP_API_URL);
+    let articleProfiles = await fetchArticleProfiles(this.state.API_URL);
     this.setState(
       {
         articleProfiles: articleProfiles
@@ -37,7 +48,7 @@ class App extends Component {
   renderHeader() {
     return(
       <header>
-        <Navbar apiUrl={process.env.REACT_APP_API_URL}/>
+        <Navbar apiUrl={this.state.API_URL}/>
       </header>
     );
   }
@@ -54,7 +65,7 @@ class App extends Component {
         <Routes>
           <Route path='/articles/title/:title' element={
             <>
-              <Feed apiUrl={process.env.REACT_APP_API_URL} />
+              <Feed apiUrl={this.state.API_URL} />
               <BackForwardLinks articles={this.state.articleProfiles}/>
             </>}
           />
@@ -72,6 +83,8 @@ class App extends Component {
   }
 
   render() {
+    console.log("API URL = " + window.location.host + "/api");
+    console.log(this.state.API_URL);
     return (
       <BrowserRouter>
         {this.renderHeader()}
